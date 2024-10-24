@@ -10,12 +10,12 @@ This project consists of two main components:
 
 Technologies Used
    Backend
-    Express: A web framework for Node.js.
-    Auth.js/Express: Simplifies OAuth authentication.
-    MongoDB: NoSQL database for storing user information.
-    Mongoose: ODM library for MongoDB.
-    CORS: Middleware for enabling cross-origin requests.
-    Bun: Fast JavaScript runtime and package manager.
+   - Express: A web framework for Node.js.
+   - Auth.js/Express: Simplifies OAuth authentication.
+   - MongoDB: NoSQL database for storing user information.
+   - Mongoose: ODM library for MongoDB.
+   - CORS: Middleware for enabling cross-origin requests.
+   - Bun: Fast JavaScript runtime and package manager.
 
    Frontend
     React: Frontend JavaScript library for building user interfaces.
