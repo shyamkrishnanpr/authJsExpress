@@ -18,8 +18,8 @@ Technologies Used
    - Bun: Fast JavaScript runtime and package manager.
 
    Frontend
-    React: Frontend JavaScript library for building user interfaces.
-    Vite: Build tool for fast development with React.
+   - React: Frontend JavaScript library for building user interfaces.
+   - Vite: Build tool for fast development with React.
 
 
 Installation
