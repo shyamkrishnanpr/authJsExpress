@@ -1,0 +1,72 @@
+
+ 
+
+
+
+
+
+doctype html
+html
+  head
+    title My Awesome Home Page
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css")
+    
+    //- Internal CSS
+    style.
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .hero {
+        //- background-image: url('https://via.placeholder.com/1200x800');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+      }
+      .hero h1 {
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      }
+      .features img {
+        transition: transform 0.3s ease-in-out;
+      }
+      .features img:hover {
+        transform: scale(1.1);
+      }
+      footer {
+        background-color: #1E3A8A;
+        color: white;
+      }
+
+  body
+    //- Navbar
+    nav.bg-blue-500.p-4.text-white.flex.justify-between.items-center
+      div.text-xl.font-bold Home
+      ul.flex.space-x-4
+        li
+          a(href="#features", class="hover:text-gray-300") Features
+        
+        li
+          a(href="/api/auth/signin", class="hover:text-gray-300") Sign In
+
+    //- Hero Section
+    section.hero.flex.items-center.justify-center
+      div.text-center
+        h1.text-5xl.font-bold.mb-4 Welcome to My Website
+        p.text-xl.mb-8 We create awesome things that you will love
+        a(href="#", class="bg-blue-500.text-white.px-4.py-2.rounded hover:bg-blue-700") Get Started
+
+    //- Features Section
+    
+
+    //- Footer
+    footer.bg-blue-500.p-4.text-white.text-center
+      p &copy; 2024 My Awesome Website. All rights reserved.
+
+          
