@@ -13,11 +13,13 @@
   },
   "dependencies": {
     "@auth/express": "^0.8.0",
+    "@auth/mongodb-adapter": "^3.7.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/pug": "^2.0.10",
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "mongodb": "^6.10.0",
     "mongoose": "^8.7.2"
   }
 }

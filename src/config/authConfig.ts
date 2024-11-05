@@ -1,11 +1,37 @@
 import GitHub from "@auth/express/providers/github";
-import Google from "@auth/express/providers/google";
 import PingId from "@auth/express/providers/ping-id";
+import Credentials from "@auth/express/providers/credentials";
 import User from "../models/AuthUsers";
-
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import { MongoClient } from "mongodb";
 export const authConfig = {
   trusthost: true,
   providers: [
+    Credentials({
+      credentials: {
+        email: {},
+        password: {},
+      },
+      authorize: async (credentials) => {
+        try {
+          const user = await User.findOne({
+            email: credentials.email,
+          });
+
+          if (!user) {
+            return null;
+          }
+
+          if (user.password !== credentials.password) {
+            return null;
+          }
+
+          return user;
+        } catch (error) {
+          return null;
+        }
+      },
+    }),
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
@@ -19,17 +45,22 @@ export const authConfig = {
     }),
   ],
 
+  adapter: MongoDBAdapter(new MongoClient(process.env.MONGO_URI as string), {
+    databaseName: "adapter-test",
+  }),
+
   callbacks: {
     async signIn({
       account,
       profile,
-   
     }: {
       account: any;
       profile?: any;
-     
     }): Promise<boolean> {
       try {
+        if (account.provider === "credentials") {
+          return true;
+        }
         let user = await User.findOne({
           providerId: profile.id || account.providerAccountId,
         });
@@ -37,7 +68,11 @@ export const authConfig = {
         if (!user) {
           user = new User({
             email: profile.email,
-            name: profile.name || profile.displayName || profile.login,
+            name:
+              profile.name ||
+              profile.displayName ||
+              profile.login ||
+              profile.given_name,
             provider: account.provider,
             providerId: profile.id || account.providerAccountId,
           });
