@@ -17,15 +17,12 @@ export const authConfig = {
           const user = await User.findOne({
             email: credentials.email,
           });
-
           if (!user) {
             return null;
           }
-
           if (user.password !== credentials.password) {
             return null;
           }
-
           return user;
         } catch (error) {
           return null;
@@ -58,6 +55,9 @@ export const authConfig = {
       profile?: any;
     }): Promise<boolean> {
       try {
+
+        console.log("account", account);
+        console.log("profile", profile);
         if (account.provider === "credentials") {
           return true;
         }
